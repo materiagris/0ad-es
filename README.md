@@ -1,1 +1,1 @@
-# 0ad Alpha XXV Spanish Translation Files
+# 0 A.D. Alpha XXV Spanish Translation Files
