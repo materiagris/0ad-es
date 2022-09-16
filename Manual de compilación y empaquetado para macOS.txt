@@ -1,0 +1,31 @@
+Manual de compilación y empaquetado de 0 A.D. para macOS (0.0.26)
+
+1. Requisitos
+	Xcode (versión mínima 10.13+).
+	Xcode Command Line Tools: 'xcode-select --install'.
+	Rust: 'brew install rust'.
+	CMake: 'brew install cmake'.
+	SVN: 'brew install svn'
+	Git: Incluido en las Xcode Command Line Tools.
+
+
+2. Descargar código fuente:
+	git clone https://github.com/0ad/0ad.git --depth=1
+  o
+    git clone https://gitlab.com/0ad/0ad.git --depth=1
+
+3. Compilación
+    cd libraries/osx
+    ./build-osx-libs.sh -j9
+    cd ../../build/workspaces
+    ./update-workspaces.sh -j9
+    cd gcc
+    make -j9
+     -> /binaries/system/pyrogenesis
+
+4. Creación de paquete distribuible
+    cp source/tools/dist/build* .
+    ./build-archives.sh
+    python3 build-osx-bundle.py '0.0.26'
+     -> 0 A.D..app
+     -> 0ad-0.0.26-alpha-osx64.dmg
